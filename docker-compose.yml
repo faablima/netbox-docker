@@ -1,23 +1,23 @@
 version: '3.4'
 services:
   netbox: &netbox
-  ports:
-      - 8000:8080
-  image: netboxcommunity/netbox:${VERSION-v3.2-1.6.1}
-  env_file: env/netbox.env
-  user: 'unit:root'
-  volumes:
-  - ./startup_scripts:/opt/netbox/startup_scripts:d,ro
-  - ./initializers:/opt/netbox/initializers:d,ro
-  - ./configuration:/etc/netbox/config:d,ro
-  - ./reports:/etc/netbox/reports:d,ro
-  - ./scripts:/etc/netbox/scripts:d,ro
-  - netbox-media-files:/opt/netbox/netbox/media:d
+    ports:
+        - 8000:8080
+    image: netboxcommunity/netbox:${VERSION-v3.2-1.6.1}
+    env_file: env/netbox.env
+    user: 'unit:root'
+    volumes:
+    - ./startup_scripts:/opt/netbox/startup_scripts:d,ro
+    - ./initializers:/opt/netbox/initializers:d,ro
+    - ./configuration:/etc/netbox/config:d,ro
+    - ./reports:/etc/netbox/reports:d,ro
+    - ./scripts:/etc/netbox/scripts:d,ro
+    - netbox-media-files:/opt/netbox/netbox/media:d
 
-volumes:
-  netbox-media-files:
-    driver: local
-  netbox-postgres-data:
-    driver: local
-  netbox-redis-data:
-    driver: local
+  volumes:
+    netbox-media-files:
+      driver: local
+    netbox-postgres-data:
+      driver: local
+    netbox-redis-data:
+      driver: local
